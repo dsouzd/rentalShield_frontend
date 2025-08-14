@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ProfileMenu from './ProfileMenu';
+import logo from '../logo.svg';
 
 const Navigation: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -29,9 +30,12 @@ const Navigation: React.FC = () => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1, cursor: 'pointer' }} onClick={() => navigate('/')}>
-          RentalShield
-        </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1, cursor: 'pointer' }} onClick={() => navigate('/')}>
+          <img src={logo} alt="RentalShield Logo" style={{ height: '32px', marginRight: '12px' }} />
+          <Typography variant="h6">
+            RentalShield
+          </Typography>
+        </Box>
         <Box>
           {isAuthenticated ? (
             <ProfileMenu onLogout={handleLogout} />
